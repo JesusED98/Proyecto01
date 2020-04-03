@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    {% extends "layout.html" %}
+    {%block body%}
+    <div class="navbar" style="background:-webkit-linear-gradient(#3D6CCF, #3D6CCF, #62B2E7);">
+      <div class="container" style="font-family: Poppins-Regular;">
+
+
+      <label class="navbar-brand" style="font-size: 1.8em;">Hola {{session['usuario']}}
+        <a href="{{ url_for('index') }}" style="color:white" class="btn btn-outline my-2 my-sm-0" type="submit">Cerrar session</a>
+        </label>
+
+
+      <div class="">
+        <form class="form-inline my-2 my-lg-0" method="post">
+          <input class="form-control mr-sm-2"  placeholder="Buscar libro"  name="buscarlibro">
+          <button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+      </div>
+    </div>
+    <div class="container">
+      <table>
+
+          <tr style="font-size: 1.5em;">
+            <th>Isbn</th>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Año de publicación</th>
+            <th></th>
+          </tr>
+          {% for libro in libros %}
+          <tr>
+            <td>{{libro.isbn}}</td>
+            <td>{{libro.title}}</td>
+            <td>{{libro.author}}</td>
+            <td>{{libro.year}}</td>
+
+            <td><a href="{{ url_for('libro', libro_isbn=libro.isbn) }}" class="btn" style="border: #62B2E7 1px solid; ">Ver</a></td>
+          </tr>
+          {%endfor%}
+      </table>
+    </div>
+    {%endblock%}
+  </body>
+</html>

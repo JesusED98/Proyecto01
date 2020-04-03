@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    		<link rel="stylesheet" type="text/css" href="../static/util.css">
+    		<link rel="stylesheet" type="text/css" href="../static/main.css">
+
+
+  </head>
+  <body>
+    {% extends "layout.html" %}
+  {% block body %}
+
+
+<div class="limiter">
+  <div class="container-login100">
+    <div class="login100-more" >
+      <h1 style="text-align:center;">Reseñas de todos los usuarios</h1>
+      <div class="validate-input">
+        {%for r in resenas%}
+        <div class="comentario" style="padding-left:20px;">
+        <a href="#">{{r.nombre}}</a>
+        <p>{{r.resena}}</p>
+        {%if r.calif == "5"%}
+        <p style="color:white;"> s
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+        </p>
+        {%elif r.calif == "4"%}
+        <p style="color:white;"> s
+          <label class="star" style=" padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+        </p>
+        {%elif r.calif == "3"%}
+        <p style="color:white;"> s
+          <label class="star" style="padding: 0px;"></label>
+          <label class="star" style="padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+          <label class="star" style="color: #FD4; padding: 0px;"></label>
+        </p>
+        {%elif r.calif == "2"%}
+        <p style="color:white;"> s
+          <label class="star" style="padding: 0px;"></label>
+          <label class="star" style=" padding: 0px;"></label>
+          <label class="star" style="padding: 0px;"></label>
+          <label class="star" style="color: #FD4;padding: 0px;"></label>
+          <label class="star" style="color: #FD4;padding: 0px;"></label>
+        </p>
+        {%elif r.calif == "1"%}
+        <p style="color:white;"> s
+          <label class="star" style=" padding: 0px;"></label>
+          <label class="star" style="padding: 0px;"></label>
+          <label class="star" style="padding: 0px;"></label>
+          <label class="star" style="padding: 0px;"></label>
+          <label class="star" style="color: #FD4;padding: 0px;"></label>
+        </p>
+        {%endif%}
+        </div>
+        <span class="focus-input100"></span>
+          <div class="wrap-input100"></div>
+        {%endfor%}
+      </div>
+     </div>
+
+    <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+      <form class="login100-form validate-form" method="post">
+        <span class="login100-form-title p-b-59">
+          Informacion Sobre el libro
+        </span>
+        <div class="wrap-input100 validate-input">
+          <h1>{{librof[0][0]}}</h1>
+          <h1>{{librof[0][1]}}</h1>
+          <h1>{{librof[0][2]}}</h1>
+          <h1>{{librof[0][3]}}</h1>
+          <span class="focus-input100"></span>
+        </div>
+        <span class="login100-form-title p-b-59">
+          Dejar Reseña</span>
+          <div class="wrap-input100 validate-input">
+        <textarea name="resena" class="input100" placeholder="Escriba su reseña"></textarea>
+        </div>
+        <div class="stars">
+            <input class="star star-5" id="star-5-2" type="radio" name="star" value="5"/>
+            <label class="star star-5" for="star-5-2"></label>
+            <input class="star star-4" id="star-4-2" type="radio" name="star"value="4"/>
+            <label class="star star-4" for="star-4-2"></label>
+            <input class="star star-3" id="star-3-2" type="radio" name="star"value="3"/>
+            <label class="star star-3" for="star-3-2"></label>
+            <input class="star star-2" id="star-2-2" type="radio" name="star"value="2"/>
+            <label class="star star-2" for="star-2-2"></label>
+            <input class="star star-1" id="star-1-2" type="radio" name="star"value="1"/>
+            <label class="star star-1" for="star-1-2"></label>
+        </div>
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+        <button class="login100-form-btn ">Enviar</button>
+        </div>
+
+          <p class="login100-form-btn" style="height:100%;"></p>
+
+        <div class="wrap-login100-form-btn">
+        <div class="login100-form-bgbtn"></div>
+        <a href="{{ url_for('buscarlibros') }}" style="color:white;" class="login100-form-btn ">Volver</a>
+        </div>
+
+
+
+
+      </form>
+    </div>
+  </div>
+</div>
+  {% endblock %}
+  </body>
+</html>
